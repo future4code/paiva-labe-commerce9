@@ -3,14 +3,28 @@ import styled from "styled-components";
 import Produtos from "./components/Produtos";
 
 const AppContainer = styled.div`
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 3fr 1fr;
+  display: flex;
   gap: 6px;
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
 `
+const ProdutosContainer = styled.div `
+display: flex;
+width: 60%;
+`
+const ProductsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+  padding: 0 1vh;
+  box-sizing: border-box;
+  margin-bottom: 2vh;
+`
+
 class App extends React.Component {
   state = {
-    arrayProducts: [
+    products: [
       {
         id: Math.random(),
         name: 'planetas',
@@ -47,12 +61,46 @@ class App extends React.Component {
         value: 50.00,
         imageUrl: 'https://res.cloudinary.com/teepublic/image/private/s--8asZT80L--/t_Resized%20Artwork/c_crop,x_10,y_10/c_fit,w_470/c_crop,g_north_west,h_626,w_470,x_0,y_0/g_north_west,u_upload:v1462829017:production:blanks:qe3008lhp5hquxmwp4a0,x_-395,y_-325/b_rgb:eeeeee/c_limit,f_auto,h_630,q_90,w_630/v1475655011/production/designs/714464_1.jpg',
       }
-    ]
+    ],
+    items: '',
   }
+
+  itemsOrdenados = (event) => {
+    this.setState({items:event.target.value})
+
+    let newProducts = []
+    switch (this.state.items) {
+      case ('crescente'):
+        newProducts = [...this.state.products]
+        this.setState({products:newProducts.sort((a,b) => {
+          return b.value - a.value})
+        })
+      break;
+
+      case ('decrescente'):
+        newProducts = [...this.state.products]
+        this.setState({products:newProducts.sort((a,b) => {
+          return a.value - b.value})
+        })
+        break;
+    } 
+  }  
+
   render() {
     return (
       <AppContainer>
-        {this.state.arrayProducts.map((produto) => {
+        <ProductsHeader>
+        <h5>Produtos:{this.state.products.length}</h5>
+        <label>
+          Ordenar:
+          <select onChange={this.itemsOrdenados}>
+            <option value="crescente">menor preço</option>
+            <option value="decrescente">maior preço</option>
+          </select>
+        </label>
+        </ProductsHeader>
+        <ProdutosContainer>
+        {this.state.products.map((produto) => {
           return <Produtos
             key={produto.id}
             nome={produto.name}
@@ -60,6 +108,7 @@ class App extends React.Component {
             imagem={produto.imageUrl}
           />
         })}
+        </ProdutosContainer>
       </AppContainer>
     );
   }
