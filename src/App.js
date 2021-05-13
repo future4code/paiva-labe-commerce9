@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Produtos from "./components/Produtos";
+import {Filtro} from './components/Filtro';
 
 const AppContainer = styled.div`
   display: flex;
@@ -24,6 +25,12 @@ const ProductsHeader = styled.div`
 
 class App extends React.Component {
   state = {
+    
+      valueMax : "",
+      valueMin : "",
+      buscaNome : "",
+      
+      
     products: [
       {
         id: Math.random(),
@@ -64,9 +71,21 @@ class App extends React.Component {
     ],
     items: '',
   }
+  onChangevalueMin = (event) => {
+    this.setState({valueMin: event.target.value})
+  }
+  
+  onChangevalueMax = (event) => {
+    this.setState({valueMax: event.target.value})
+  }
+  
+  onChangebuscaNome = (event) => {
+    this.setState({buscaNome: event.target.value})
+  }
 
   itemsOrdenados = (event) => {
     this.setState({items:event.target.value})
+>>>>>>> master
 
     let newProducts = []
     switch (this.state.items) {
@@ -88,7 +107,9 @@ class App extends React.Component {
 
   render() {
     return (
+      
       <AppContainer>
+        <Filtro/>
         <ProductsHeader>
         <h5>Produtos:{this.state.products.length}</h5>
         <label>
@@ -114,3 +135,7 @@ class App extends React.Component {
   }
 }
 export default App;
+  
+
+
+
