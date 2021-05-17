@@ -4,30 +4,54 @@ import { Products } from './components/Products/Products';
 import { ShoppingCart } from './components/ShoppingCart/ShoppingCart';
 import styled from 'styled-components';
 
+const MainContainer = styled.div`
+
+
+
+`;
+
+const Header= styled.div`
+display:flex;
+border-top:0px;
+height: auto;
+background:black;
+  color:white;
+justify-content: space-between;
+padding: 8px;
+`;
+
+const ImagemLogo = styled.img`
+width: 90px;
+height: 90px;
+`;
+
 const AppContainer = styled.div`
+  height:auto;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   padding: 16px;
   gap: 8px;
+  color:white;
+  
 `;
 
 const products = [
   {
     id: Math.random(),
-    name: 'Planetas',
+    name: 'Open Space',
     price: 55,
     photo: 'https://cdn.shopify.com/s/files/1/0740/8743/products/SpaceTeeFront_1477x.jpg?v=1608292236'
   },
   {
     id: Math.random(),
-    name: 'Drink da Lua',
+    name: 'Moon Drink',
     price: 55,
     photo: 'https://cdn11.bigcommerce.com/s-1ddqe/images/stencil/original/products/1718/5459/kicking-back-space-t-shirt__07106.1506777584.jpg?c=2'
   },
   {
     id: Math.random(),
-    name: 'Galáxias',
-    price: 30,
+    name: 'The Universe in me',
+    price: 35,
     photo: 'https://images-na.ssl-images-amazon.com/images/I/71B9ehq6SSL._AC_UX385_.jpg'
   },
   {
@@ -35,7 +59,39 @@ const products = [
     name: 'Space Force',
     price: 45,
     photo: 'https://images.lookhuman.com/render/standard/mAlEGceyk3JkANJFpG7ktelWbNfytKgf/3300-mint-xl-t-space-force-like-the-air-force-but-in-space.jpg'
-  }
+  },
+  {
+    id: Math.random(),
+    name: 'Catnauta',
+    price: 65,
+    photo: 'https://res.cloudinary.com/teepublic/image/private/s--8asZT80L--/t_Resized%20Artwork/c_crop,x_10,y_10/c_fit,w_470/c_crop,g_north_west,h_626,w_470,x_0,y_0/g_north_west,u_upload:v1462829017:production:blanks:qe3008lhp5hquxmwp4a0,x_-395,y_-325/b_rgb:eeeeee/c_limit,f_auto,h_630,q_90,w_630/v1475655011/production/designs/714464_1.jpg',
+  },
+  {
+    id: Math.random(),
+    name: 'The Universe in a Catshell',
+    price: 55,
+    photo: 'https://img.elo7.com.br/product/zoom/2686AB6/camisa-gato-espacial-camiseta-gato-espacial.jpg'
+  },
+  {
+    id: Math.random(),
+    name: 'UFO',
+    price: 45,
+    photo: 'https://t-static.dafiti.com.br/MAehZ2rQuIr5QrxhiJSoSzbID24=/fit-in/325x471/static.dafiti.com.br/p/over-fame-camiseta-estampada-over-fame-naves-espaciais-azul-9628-2999934-1-zoom.jpg'
+  },
+  {
+    id: Math.random(),
+    name: 'Lost in Space',
+    price: 45,
+    photo: 'https://a-static.mlcdn.com.br/1500x1500/camiseta-baby-look-feminina-espacial-astronauta-total-print-over-fame/simbiose/ujahfj2zlp/cde9b76338300f99e061bb2163865683.jpg'
+  },
+  {
+    id: Math.random(),
+    name: 'I Believe',
+    price: 45,
+    photo: 'https://img.elo7.com.br/product/main/26AECF4/camiseta-i-believe-nave-espacial-aliens-alienigena-et-alien.jpg'
+  },
+
+
 ]
 
 class App extends React.Component {
@@ -101,6 +157,12 @@ class App extends React.Component {
 
   render() {
     return (
+     <MainContainer>
+       <Header>
+         
+         <h1>SPACEMAN'S HOUSE</h1>
+         <ImagemLogo src="https://thumbs.dreamstime.com/b/reflex%C3%A3o-do-espa%C3%A7o-em-um-capacete-dos-astronautas-estilo-tirado-m-o-projeto-das-c-pias-ilustra-vetor-149739167.jpg"/>
+       </Header>
       <AppContainer>
         <Filters
           minFilter={this.state.minFilter}
@@ -122,8 +184,12 @@ class App extends React.Component {
           onRemoveProductFromCart={this.onRemoveProductFromCart}
         />
       </AppContainer>
+      </MainContainer>
     );
   }
 }
 
 export default App;
+     
+        
+        

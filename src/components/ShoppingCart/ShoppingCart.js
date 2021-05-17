@@ -5,12 +5,18 @@ import styled from 'styled-components';
 const ShoppingCartContainer = styled.div`
   border: 1px solid black;
   padding: 8px;
+  background:black;
+  color:white;
+
 `;
 
 const CartListContainer = styled.div`
   display: grid;
   gap: 8px;
 `
+const BotaoFinalizar = styled.div`
+border-radius:3px;
+`;
 
 export class ShoppingCart extends React.Component {
   getTotalValue = () => {
