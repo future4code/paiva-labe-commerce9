@@ -5,16 +5,27 @@ const CardContainer = styled.div`
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  border-radius: 6px;
+  background:black;
+  color:white;
+  
+  color: white
 `;
 
+
+
 const ImagemCard = styled.img`
-height : 200px
+height : 200px;
+border-radius: 6px;
+margin:8px
+
 `
 
 const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
   padding: 16px;
+  
 
   p {
     margin: 4px 0;
@@ -24,6 +35,7 @@ const CardInfo = styled.div`
 const AddToCartButton = styled.button`
   align-self: center;
   margin-top: 4px;
+  border-radius: 4px;
 `
 
 export class ProductCard extends React.Component {
@@ -32,10 +44,10 @@ export class ProductCard extends React.Component {
     return <CardContainer>
       <ImagemCard src={product.photo}/>
       <CardInfo>
-        <p>{product.name}</p>
+        <p><b>{product.name}</b></p>
         <p>R${product.price},00</p>
-        <AddToCartButton onClick={() => this.props.onAddProductToCart(product.id)}>
-          Adicionar ao carrinho
+        <AddToCartButton img=" " onClick={() => this.props.onAddProductToCart(product.id)}>
+          Adicionar ao carrinho 
         </AddToCartButton>
       </CardInfo>
     </CardContainer>

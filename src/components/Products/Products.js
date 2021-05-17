@@ -12,6 +12,8 @@ const ProductsHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
+  background:black;
+  color:white;
 `
 
 const ProductsGrid = styled.div`
